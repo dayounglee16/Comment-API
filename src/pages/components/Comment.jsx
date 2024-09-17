@@ -25,17 +25,6 @@ const CommentWrap = styled.div`
   h1 {
     text-align: center;
     margin: 30px 0;
-  }
-
-  .comment-inputBox {
-    max-width: 800px;
-    text-align: center;
-    display: flex;
-    gap: 10px;
-
-    input {
-      flex: 1;
-      padding: 10px;
-    }
+    cursor: pointer;
   }
 `;
