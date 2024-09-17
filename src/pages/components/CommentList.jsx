@@ -1,16 +1,22 @@
 import styled from "styled-components";
+import CommentInput from "./CommentInput";
 
 const CommentList = () => {
   return (
-    <CommentListBox className="CommentListBox">
-      <h4>
-        이름 <span>(이메일)</span>
-      </h4>
-      <p>댓글</p>
-      <div>
-        <button>삭제</button>
-      </div>
-    </CommentListBox>
+    <>
+      <CommentListBox className="CommentListBox">
+        <div className="commentList">
+          <h4>
+            이름 <span>(이메일)</span>
+          </h4>
+          <p>댓글</p>
+          <div>
+            <button>삭제</button>
+          </div>
+        </div>
+        <CommentInput />
+      </CommentListBox>
+    </>
   );
 };
 
@@ -21,14 +27,21 @@ const CommentListBox = styled.div`
   border-radius: 5px;
   padding: 20px;
   width: 100%;
-  height: 600px;
+  height: 650px;
   margin-top: 50px;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  gap: 20px;
+
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
 
-  p {
-    width: 60%;
+  .commentList {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+
+    p {
+      width: 60%;
+    }
   }
 `;

@@ -12,10 +12,6 @@ const Comment = () => {
   return (
     <CommentWrap>
       <h1 onClick={clickTitle}>Comment-API</h1>
-      <form className="comment-inputBox">
-        <input type="text" />
-        <button>게시</button>
-      </form>
       <CommentList />
     </CommentWrap>
   );
