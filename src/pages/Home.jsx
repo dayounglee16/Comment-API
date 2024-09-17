@@ -11,6 +11,7 @@ import { CommentsState } from "./components/recoil/atom";
 const Home = () => {
   const [, setComments] = useRecoilState(CommentsState);
 
+  //데이터 조회
   useEffect(() => {
     const getData = async () => {
       try {

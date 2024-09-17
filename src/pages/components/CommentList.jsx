@@ -11,6 +11,7 @@ const CommentList = () => {
 
   const idRef = useRef(6);
 
+  //추가
   const addCommentItem = async () => {
     const newComment = {
       id: idRef.current++,
@@ -28,6 +29,19 @@ const CommentList = () => {
     }
   };
 
+  //삭제
+  const deleteComment = async (comment) => {
+    try {
+      await instance.delete(`/comments/${comment}`);
+      const filteredComment = comments.filter(
+        (deleteComment) => deleteComment !== comment
+      );
+      setComments(filteredComment);
+    } catch (error) {
+      console.error(`error ${error}`);
+    }
+  };
+
   return (
     <>
       <CommentListBox className="CommentListBox">
@@ -40,7 +54,7 @@ const CommentList = () => {
               </h4>
               <p>{comment.body}</p>
               <div>
-                <button>삭제</button>
+                <button onClick={() => deleteComment(comment)}>삭제</button>
               </div>
             </div>
           );
