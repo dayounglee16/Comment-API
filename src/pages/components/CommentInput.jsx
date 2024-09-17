@@ -1,10 +1,27 @@
+import { useRecoilState } from "recoil";
 import styled from "styled-components";
+import { CommentsInputState } from "./recoil/atom";
 
-const CommentInput = () => {
+const CommentInput = ({ addCommentItem }) => {
+  const [CommentsInput, setCommentsInput] = useRecoilState(CommentsInputState);
+
+  const onChangeCommentInput = (e) => {
+    setCommentsInput(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    addCommentItem();
+  };
+
   return (
-    <CommentInputBox className="comment-inputBox">
-      <input type="text" />
-      <button>게시</button>
+    <CommentInputBox className="comment-inputBox" onSubmit={handleSubmit}>
+      <input
+        type="text"
+        value={CommentsInput}
+        onChange={onChangeCommentInput}
+      />
+      <button type="submit">게시</button>
     </CommentInputBox>
   );
 };
@@ -12,7 +29,6 @@ const CommentInput = () => {
 export default CommentInput;
 
 const CommentInputBox = styled.form`
-  max-width: 800px;
   text-align: center;
   display: flex;
   gap: 10px;

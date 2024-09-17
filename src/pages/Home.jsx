@@ -1,26 +1,28 @@
 import { Routes, Route } from "react-router-dom";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { instance } from "./api/intance";
+import { useRecoilState } from "recoil";
 
 import Comment from "./components/Comment";
+import { CommentsState } from "./components/recoil/atom";
 
 const Home = () => {
-  const [comment, setComment] = useState([]);
+  const [, setComments] = useRecoilState(CommentsState);
 
   useEffect(() => {
     const getData = async () => {
       try {
         const res = await instance.get("/comments");
-        setComment([...res.data.slice(0, 5)]);
+        setComments([...res.data.slice(0, 5)]);
       } catch (error) {
         console.error(`error ${error}`);
       }
     };
 
     getData();
-  }, []);
+  }, [setComments]);
 
   const navigate = useNavigate();
 
@@ -40,7 +42,7 @@ const Home = () => {
             </header>
           }
         />
-        <Route path="comment" element={<Comment comment={comment} />} />
+        <Route path="comment" element={<Comment />} />
       </Routes>
     </Container>
   );
@@ -50,7 +52,7 @@ export default Home;
 
 const Container = styled.div`
   width: 100%;
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto;
   margin-top: 30px;
 
