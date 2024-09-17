@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import CommentList from "./CommentList";
 
-const Comment = () => {
+const Comment = ({ comment }) => {
   const navigate = useNavigate();
   const clickTitle = () => {
     navigate("/");
