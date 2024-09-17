@@ -3,3 +3,13 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+button {
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 5px 10px;
+  white-space: nowrap;
+  background-color: #1760ff;
+  border: none;
+  color: #fff;
+}
