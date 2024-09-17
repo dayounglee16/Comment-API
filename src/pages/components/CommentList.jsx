@@ -21,6 +21,9 @@ const CommentList = () => {
     };
 
     try {
+      if (commentsInput === "") {
+        return;
+      }
       const res = await instance.post("/comments", newComment);
       setComments([...comments, res.data]);
       setCommentsInput("");

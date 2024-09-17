@@ -32,6 +32,7 @@ const CommentInputBox = styled.form`
   text-align: center;
   display: flex;
   gap: 10px;
+
   input {
     outline: none;
     flex: 1;
