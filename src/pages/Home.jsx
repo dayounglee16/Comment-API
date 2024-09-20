@@ -2,11 +2,11 @@ import { Routes, Route } from "react-router-dom";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import { instance } from "./api/intance";
+import { instance } from "../api/intance";
 import { useRecoilState } from "recoil";
 
-import Comment from "./components/Comment";
-import { CommentsState } from "./components/recoil/atom";
+import Comment from "../components/Comment";
+import { CommentsState } from "../recoil/atom";
 
 const Home = () => {
   const [, setComments] = useRecoilState(CommentsState);

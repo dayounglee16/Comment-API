@@ -1,6 +1,6 @@
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
-import { CommentsInputState } from "./recoil/atom";
+import { CommentsInputState } from "../recoil/atom";
 
 const CommentInput = ({ addCommentItem }) => {
   const [CommentsInput, setCommentsInput] = useRecoilState(CommentsInputState);
@@ -20,6 +20,7 @@ const CommentInput = ({ addCommentItem }) => {
         type="text"
         value={CommentsInput}
         onChange={onChangeCommentInput}
+        placeholder="내용을 입력하세요"
       />
       <button type="submit">게시</button>
     </CommentInputBox>

@@ -2,7 +2,7 @@ import styled from "styled-components";
 import CommentInput from "./CommentInput";
 import { instance } from "../api/intance";
 import { useRecoilState } from "recoil";
-import { CommentsInputState, CommentsState } from "./recoil/atom";
+import { CommentsInputState, CommentsState } from "../recoil/atom";
 import { useRef } from "react";
 
 const CommentList = () => {
@@ -76,12 +76,13 @@ const CommentListBox = styled.div`
   border-radius: 5px;
   padding: 20px;
   width: 100%;
-  height: 700px;
+  min-height: 700px;
   margin-top: 50px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 
   .commentList {
     display: flex;
