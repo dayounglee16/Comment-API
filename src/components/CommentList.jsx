@@ -4,6 +4,7 @@ import { instance } from "../api/intance";
 import { useRecoilState } from "recoil";
 import { CommentsInputState, CommentsState } from "../recoil/atom";
 import { useRef } from "react";
+import CommentItem from "./CommentItem";
 
 const CommentList = () => {
   const [commentsInput, setCommentsInput] = useRecoilState(CommentsInputState);
@@ -32,35 +33,11 @@ const CommentList = () => {
     }
   };
 
-  //삭제
-  const deleteComment = async (comment) => {
-    try {
-      await instance.delete(`/comments/${comment}`);
-      const filteredComment = comments.filter(
-        (deleteComment) => deleteComment !== comment
-      );
-      setComments(filteredComment);
-    } catch (error) {
-      console.error(`error ${error}`);
-    }
-  };
-
   return (
     <>
       <CommentListBox className="CommentListBox">
         {comments.map((comment, i) => {
-          return (
-            <div className="commentList" key={i + 1}>
-              <h4>
-                {i + 1}. {comment.name}
-                <span>({comment.email})</span>
-              </h4>
-              <p>{comment.body}</p>
-              <div>
-                <button onClick={() => deleteComment(comment)}>삭제</button>
-              </div>
-            </div>
-          );
+          return <CommentItem comment={comment} key={i + 1} />;
         })}
 
         <CommentInput addCommentItem={addCommentItem} />
@@ -83,21 +60,4 @@ const CommentListBox = styled.div`
   justify-content: space-between;
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-
-  .commentList {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 30px;
-
-    h4 {
-      border-right: 1px solid #ccc;
-      padding-right: 20px;
-      white-space: nowrap;
-    }
-
-    p {
-      flex: 1;
-    }
-  }
 `;
