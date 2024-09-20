@@ -3,7 +3,7 @@ import { instance } from "../api/intance";
 import { useRecoilState } from "recoil";
 import { CommentsState } from "../recoil/atom";
 
-const CommentItem = ({ comment, i }) => {
+const CommentItem = ({ comment }) => {
   const [comments, setComments] = useRecoilState(CommentsState);
 
   //삭제
@@ -21,7 +21,7 @@ const CommentItem = ({ comment, i }) => {
   return (
     <CommentItemBox>
       <h4>
-        {i + 1}. {comment.name}
+        {comment.name}
         <span>({comment.email})</span>
       </h4>
       <p>{comment.body}</p>
